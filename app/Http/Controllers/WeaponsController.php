@@ -9,7 +9,7 @@ class WeaponsController extends Controller
 {
     public function GetWeapons(){
         $weapons = Weapon::All();
-        return json_encode($weapons);
+        return view('pages.weapons.index', ['weapons' => $weapons]);
     }
 
     public function GetWeapon($id){

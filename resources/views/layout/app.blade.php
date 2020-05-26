@@ -27,7 +27,7 @@
     <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}"  />
 
     <!-- inject css start -->
-
+    <link rel="stylesheet" href="{{asset('style.css')}}">
     <!--== bulma css -->
 
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.css" rel="stylesheet" type="text/css" />
@@ -46,34 +46,20 @@
 
 
 
-            <header>
-
-                @include('partials.header')
-
-            </header>
-
+            @include('partials.header')
 
 
             @yield('content')
 
 
 
-            <footer class="footer">
-
-                @include('partials.footer')
-
-            </footer>
-
-
+            @include('partials.footer')
 
         </div>
 
 
 
         <!-- inject js start -->
-
-
-
     </body>
 
 </html>
