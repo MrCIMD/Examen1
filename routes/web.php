@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('weapons', 'WeaponsController@GetWeapons');
+
+Route::get('weapon/{id}', 'WeaponsController@GetWeapon');
