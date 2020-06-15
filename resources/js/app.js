@@ -17,3 +17,4 @@ require('./components/layout/footer.component');
 require('./components/pages/home.component');
 
 require('./components/pages/weapons/create.component');
+require('./components/pages/weapons/index.component');

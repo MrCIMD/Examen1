@@ -1,3 +1,6 @@
 .w-pro {
     width: 40vw;
 }
+table {
+    width: 100% !important;
+}

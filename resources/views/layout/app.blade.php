@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Tiendita de La esquina</title>
+        <title>Armas</title>
         <!-- favicon icon -->
         <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}"  />
         <!-- inject css start -->

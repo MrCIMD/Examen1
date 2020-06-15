@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+
 import image from './../../../../../public/img/800x480.png';
 
 export default class WeaponsCreate extends Component {
@@ -43,12 +45,31 @@ export default class WeaponsCreate extends Component {
     }
 
     saveButton() {
-        console.log(this.state);
+        const data = new FormData()
+        data.append('image', this.state.image);
+        data.append('name', this.state.name);
+        data.append('precision', this.state.precision);
+        data.append('scope', this.state.scope);
+        data.append('hurt', this.state.hurt);
+
+        axios.post('http://127.0.0.1:8000/api/weapons', data)
+            .then(response => {
+                alert('Todo correcto compa!');
+                console.log(response);
+            }).catch(error => {
+                alert('Algo fallo');
+                console.error(error);
+            });
     }
 
     render() {
         return (
             <div className="container is-fluid">
+                <div className="has-text-right">
+                    <a href="/weapons" className="button is-danger is-rounded">
+                        <i className="fas fa-chevron-left"></i> Volver
+                    </a>
+                </div>
                 <div className="has-text-centered">
                     <h2 className="title is-2">Crear una nueva arma.</h2>
                 </div>
