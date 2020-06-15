@@ -12,6 +12,11 @@ class WeaponsController extends Controller
         return response()->json(['success' => true, 'content' => $weapons], 200);
     }
 
+    public function GetWeapon(Int $id){
+        $weapon = Weapon::find($id);
+        return response()->json(['success' => true, 'content' => $weapon], 200);
+    }
+
     public function PostWeapon(Request $request){
         if ($request) {
             if ($request->hasFile('image')) {

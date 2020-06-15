@@ -65785,6 +65785,8 @@ __webpack_require__(/*! ./components/pages/weapons/create.component */ "./resour
 
 __webpack_require__(/*! ./components/pages/weapons/index.component */ "./resources/js/components/pages/weapons/index.component.js");
 
+__webpack_require__(/*! ./components/pages/weapons/edit.component */ "./resources/js/components/pages/weapons/edit.component.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -66224,6 +66226,253 @@ if (document.getElementById('weaponsCreate')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/pages/weapons/edit.component.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/pages/weapons/edit.component.js ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return WeaponsEdit; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _public_img_800x480_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../../../../public/img/800x480.png */ "./public/img/800x480.png");
+/* harmony import */ var _public_img_800x480_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_public_img_800x480_png__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+var WeaponsEdit = /*#__PURE__*/function (_Component) {
+  _inherits(WeaponsEdit, _Component);
+
+  var _super = _createSuper(WeaponsEdit);
+
+  function WeaponsEdit(props) {
+    var _this;
+
+    _classCallCheck(this, WeaponsEdit);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      name: '',
+      image: [],
+      precision: 50,
+      scope: 50,
+      hurt: 50
+    };
+    _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    _this.handleInputFile = _this.handleInputFile.bind(_assertThisInitialized(_this));
+    _this.saveButton = _this.saveButton.bind(_assertThisInitialized(_this));
+
+    _this.getData();
+
+    return _this;
+  }
+
+  _createClass(WeaponsEdit, [{
+    key: "getData",
+    value: function getData() {
+      console.log(this.props.match.params.id);
+    }
+  }, {
+    key: "handleInputChange",
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.type === 'checkbox' ? target.checked : target.value ? target.type === 'number' ? parseInt(target.value) : target.value : target.value;
+      var name = target.name;
+      this.setState(_defineProperty({}, name, value));
+    }
+  }, {
+    key: "handleInputFile",
+    value: function handleInputFile(event) {
+      var img = event.target.files[0];
+      var fileName = document.querySelector('#file-js-example .file-name');
+      fileName.textContent = img.name;
+      var image = document.getElementById('image');
+      image.src = URL.createObjectURL(img);
+      this.setState(_defineProperty({}, event.target.name, img));
+    }
+  }, {
+    key: "saveButton",
+    value: function saveButton() {
+      var data = new FormData();
+      data.append('image', this.state.image);
+      data.append('name', this.state.name);
+      data.append('precision', this.state.precision);
+      data.append('scope', this.state.scope);
+      data.append('hurt', this.state.hurt);
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://127.0.0.1:8000/api/weapons', data).then(function (response) {
+        alert('Todo correcto compa!');
+        console.log(response);
+      })["catch"](function (error) {
+        alert('Algo fallo');
+        console.error(error);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container is-fluid"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "has-text-right"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/weapons",
+        className: "button is-danger is-rounded"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-chevron-left"
+      }), " Volver")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "has-text-centered"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "title is-2"
+      }, "Editar arma.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        action: "#"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label"
+      }, "Nombre"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "control"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input is-success",
+        type: "text",
+        name: "name",
+        value: this.state.name,
+        onChange: this.handleInputChange
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "columns"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", {
+        className: "image is-5by3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "image",
+        src: _public_img_800x480_png__WEBPACK_IMPORTED_MODULE_3___default.a
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "file-js-example",
+        className: "file is-primary has-name"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "file-label"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "file-input",
+        type: "file",
+        accept: "image/x-png,image/jpeg",
+        name: "image",
+        onChange: this.handleInputFile
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "file-cta"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "file-icon"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-upload"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "file-label"
+      }, "Agrega una imagen")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "file-name"
+      }, "No hay archivo"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "columns"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label"
+      }, "Precisi\xF3n."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "control"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input is-success",
+        type: "number",
+        max: "100",
+        min: "0",
+        name: "precision",
+        value: this.state.precision,
+        onChange: this.handleInputChange
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label"
+      }, "Alcance."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "control"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input is-success",
+        type: "number",
+        max: "100",
+        min: "0",
+        name: "scope",
+        value: this.state.scope,
+        onChange: this.handleInputChange
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "label"
+      }, "Da\xF1o."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "control"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "input is-success",
+        type: "number",
+        max: "100",
+        min: "0",
+        name: "hurt",
+        value: this.state.hurt,
+        onChange: this.handleInputChange
+      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "control has-text-centered"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "button is-primary m-5",
+        type: "button",
+        onClick: this.saveButton
+      }, "Guardar")));
+    }
+  }]);
+
+  return WeaponsEdit;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+if (document.getElementById('weaponsEdit')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WeaponsEdit, null), document.getElementById('weaponsEdit'));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/pages/weapons/index.component.js":
 /*!******************************************************************!*\
   !*** ./resources/js/components/pages/weapons/index.component.js ***!
@@ -66339,9 +66588,11 @@ var WeaponsIndex = /*#__PURE__*/function (_Component) {
           value: weapon.hurt,
           max: "100"
         }, weapon.hurt, "%")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Creado el:"), weapon.created_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Actualizado el:"), weapon.updated_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          "class": "button is-warning"
+          href: 'weapons/edit/' + weapon.id,
+          className: "button is-warning"
         }, "Editar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          "class": "button is-danger"
+          href: 'weapons/delete/' + weapon.id,
+          className: "button is-danger"
         }, "Eliminar")));
       }))))));
     }

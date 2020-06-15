@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/weapons', 'WeaponsController@GetWeapons');
 
+Route::get('/weapons/{id?}', 'WeaponsController@GetWeapon');
+
 Route::post('/weapons', 'WeaponsController@PostWeapon');

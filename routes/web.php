@@ -24,3 +24,11 @@ Route::get('/weapons/create', function () {
 Route::get('/weapons', function () {
     return view('pages.weapons.index');
 });
+
+Route::get('/weapons/edit/{id?}', function ($id) {
+    return view('pages.weapons.edit');
+});
+
+Route::get('/weapons/delete/{id?}', function ($id) {
+    return view('pages.weapons.delete');
+});
