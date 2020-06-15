@@ -1,5 +1,5 @@
 @extends ('layout.app')
 
 @section ('content')
-    <div id="home"></div>
+    <div id="weaponsCreate"></div>
 @stop

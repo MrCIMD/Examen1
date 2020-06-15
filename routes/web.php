@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('weapons', 'WeaponsController@GetWeapons');
+Route::get('/weapons/create', function () {
+    return view('pages.weapons.create');
+});
 
-Route::get('weapon/{id}', 'WeaponsController@GetWeapon');
+Route::get('/weapons', function () {
+    return view('pages.weapons.index');
+});

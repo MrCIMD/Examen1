@@ -2,8 +2,12 @@
 
 
 @section ('content')
-
 <div class="container is-fluid">
+    <div class="has-text-right">
+        <a href="/weapons/create" class="button is-success is-rounded">
+            <i class="fas fa-plus"></i> Nuevo
+        </a>
+    </div>
     <div class="notification">
         <div class="table-container">
             <table class="table">
@@ -18,26 +22,26 @@
                 </thead>
                 <tbody>
 
-                    @foreach ($weapons as $weapon)
+
                     <tr>
-                        <td>{{ $weapon->id }}</td>
+                        <td>1</td>
                         <td>
                             <figure class="image w-pro">
-                                <img src="{{asset('IMG/' . $weapon->image )}}" alt="">
+                                <img src="{{asset('/uploads/images/65aa7babb79e0b3c4b36e59eb6da7ce09ad8d35ca2ef29fb7410f4c6d497925c.png')}}" alt="">
                             </figure>
                         </td>
-                        <td>{{ $weapon->name }}</td>
+                        <td>Nombre</td>
                         <td>
-                            <progress class="progress is-success" value="{{ $weapon->precision }}" max="100">{{ $weapon->precision }}%</progress>
-                            <progress class="progress is-warning" value="{{ $weapon->scope }}" max="100">{{ $weapon->scope }}%</progress>
-                            <progress class="progress is-danger" value="{{ $weapon->hurt }}" max="100">{{ $weapon->hurt }}%</progress>
+                            <progress class="progress is-success" value="70" max="100">70%</progress>
+                            <progress class="progress is-warning" value="35" max="100">35%</progress>
+                            <progress class="progress is-danger" value="60" max="100">60%</progress>
                         </td>
                         <td>
-                            {{ $weapon->created_at }}
-                            {{ $weapon->updated_at }}
+                            created_at
+                            updated_at
                         </td>
                     </tr>
-                    @endforeach
+
 
                 </tbody>
             </table>

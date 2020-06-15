@@ -15,7 +15,8 @@
         <link rel="stylesheet" href="{{asset('style.css')}}">
         <!--== bulma css -->
         <link href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.css" rel="stylesheet" type="text/css" />
-        <!-- inject css end -->
+        <!-- Place your kit's code here -->
+        <script src="https://kit.fontawesome.com/910b599d36.js" crossorigin="anonymous"></script>
     </head>
 
     <body>
@@ -29,6 +30,6 @@
 
         </div>
 
-        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
     </body>
 </html>
