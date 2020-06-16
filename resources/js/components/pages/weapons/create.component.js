@@ -54,8 +54,8 @@ export default class WeaponsCreate extends Component {
 
         axios.post('http://127.0.0.1:8000/api/weapons', data)
             .then(response => {
-                alert('Todo correcto compa!');
-                console.log(response);
+                alert('!Creado');
+                window.location.href = 'http://127.0.0.1:8000/weapons/';
             }).catch(error => {
                 alert('Algo fallo');
                 console.error(error);

@@ -69,8 +69,8 @@ export default class WeaponsIndex extends Component {
                                             <p><b>Actualizado el:</b>{weapon.updated_at}</p>
                                         </td>
                                         <td>
-                                            <a href={'weapons/edit/' + weapon.id} className="button is-warning">Editar</a>
-                                            <a href={'weapons/delete/' + weapon.id} className="button is-danger">Eliminar</a>
+                                            <a href={'/weapons/edit/' + weapon.id} className="button is-warning">Editar</a>
+                                            <a href={'/weapons/delete/' + weapon.id} className="button is-danger">Eliminar</a>
                                         </td>
                                     </tr>
                                 )}

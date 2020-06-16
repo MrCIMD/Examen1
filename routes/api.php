@@ -23,3 +23,7 @@ Route::get('/weapons', 'WeaponsController@GetWeapons');
 Route::get('/weapons/{id?}', 'WeaponsController@GetWeapon');
 
 Route::post('/weapons', 'WeaponsController@PostWeapon');
+
+Route::patch('/weapons/{id?}', 'WeaponsController@PatchWeapon');
+
+Route::delete('/weapons/{id?}', 'WeaponsController@DeleteWeapon');

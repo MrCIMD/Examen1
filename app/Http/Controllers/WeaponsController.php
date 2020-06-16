@@ -36,4 +36,26 @@ class WeaponsController extends Controller
             return  response()->json(['success' => true, 'weapon' => $weapon] ,200);
         }
     }
+
+    public function PatchWeapon(Request $request, Int $id){
+        // return response()->json(['id' => $id, 'weapon' => $request], 200);
+        if ($request) {
+            $weapon = Weapon::find($id);
+            $weapon->name = $request->name;
+            $weapon->precision = $request->precision;
+            $weapon->scope = $request->scope;
+            $weapon->hurt = $request->hurt;
+            $weapon->save();
+            return response()->json(['success' => true, 'weapon' => $weapon], 200);
+        }
+    }
+
+    public function DeleteWeapon(Int $id){
+        $weapon = Weapon::find($id);
+        if ($weapon->delete()) {
+            return response()->json(['success' => true], 200);
+        } else {
+            return response()->json(['success' => false], 404);
+        }
+    }
 }

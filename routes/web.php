@@ -26,9 +26,9 @@ Route::get('/weapons', function () {
 });
 
 Route::get('/weapons/edit/{id?}', function ($id) {
-    return view('pages.weapons.edit');
+    return view('pages.weapons.edit', ['id' => $id]);
 });
 
 Route::get('/weapons/delete/{id?}', function ($id) {
-    return view('pages.weapons.delete');
+    return view('pages.weapons.delete', ['id' => $id]);
 });

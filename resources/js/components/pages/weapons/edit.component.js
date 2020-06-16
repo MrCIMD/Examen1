@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 
-import image from './../../../../../public/img/800x480.png';
+import axios from 'axios';
 
 export default class WeaponsEdit extends Component {
 
@@ -12,6 +11,7 @@ export default class WeaponsEdit extends Component {
         this.state = {
             name: '',
             image: [],
+            url: '',
             precision: 50,
             scope: 50,
             hurt: 50
@@ -20,12 +20,26 @@ export default class WeaponsEdit extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleInputFile = this.handleInputFile.bind(this);
         this.saveButton = this.saveButton.bind(this);
+        // this.getData = this.getData.bind(this);
 
         this.getData();
     }
 
     getData() {
-
+        axios.get(`http://127.0.0.1:8000/api/weapons/${id_weapon}`)
+            .then(response => {
+                var weapon = response.data.content;
+                this.setState({
+                    name: weapon.name,
+                    image: [],
+                    url: `http://127.0.0.1:8000/uploads/images/${weapon.image}`,
+                    precision: weapon.precision,
+                    scope: weapon.scope,
+                    hurt: weapon.hurt
+                });
+            }).catch(error => {
+                console.error(error);
+            });
     }
 
     handleInputChange(event) {
@@ -51,21 +65,24 @@ export default class WeaponsEdit extends Component {
     }
 
     saveButton() {
-        const data = new FormData()
-        data.append('image', this.state.image);
-        data.append('name', this.state.name);
-        data.append('precision', this.state.precision);
-        data.append('scope', this.state.scope);
-        data.append('hurt', this.state.hurt);
-
-        axios.post('http://127.0.0.1:8000/api/weapons', data)
-            .then(response => {
-                alert('Todo correcto compa!');
-                console.log(response);
-            }).catch(error => {
-                alert('Algo fallo');
-                console.error(error);
-            });
+        // console.log(this.state);
+        // const dataedit = new FormData();
+        // dataedit.append('name', this.state.name);
+        // dataedit.append('name', this.state.name);
+        // console.log(dataedit);
+        // dataedit.append('precision', this.state.precision);
+        // dataedit.append('scope', this.state.scope);
+        // dataedit.append('hurt', this.state.hurt);
+        // // dataedit.append('image', this.state.image);
+        // console.log(dataedit);
+        // axios.patch(`http://127.0.0.1:8000/api/weapons/${id_weapon}`, dataedit)
+        //     .then(response => {
+        //         alert('Todo correcto compa!');
+        //         console.log(response);
+        //     }).catch(error => {
+        //         alert('Algo fallo');
+        //         console.error(error);
+        //     });
     }
 
     render() {
@@ -90,7 +107,7 @@ export default class WeaponsEdit extends Component {
                     <div className="columns">
                         <div className="column">
                             <figure className="image is-5by3">
-                                <img id="image" src={image} />
+                                <img id="image" src={this.state.url} />
                             </figure>
                         </div>
 

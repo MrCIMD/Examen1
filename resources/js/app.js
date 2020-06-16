@@ -19,3 +19,4 @@ require('./components/pages/home.component');
 require('./components/pages/weapons/create.component');
 require('./components/pages/weapons/index.component');
 require('./components/pages/weapons/edit.component');
+require('./components/pages/weapons/delete.component');
