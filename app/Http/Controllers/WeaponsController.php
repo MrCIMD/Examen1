@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class WeaponsController extends Controller
 {
     public function GetWeapons(){
-        $weapons = Weapon::All();
+        $weapons = Weapon::get();
         return response()->json(['success' => true, 'content' => $weapons], 200);
     }
 
@@ -52,6 +52,7 @@ class WeaponsController extends Controller
 
     public function DeleteWeapon(Int $id){
         $weapon = Weapon::find($id);
+
         if ($weapon->delete()) {
             return response()->json(['success' => true], 200);
         } else {

@@ -66510,7 +66510,6 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
       hurt: 50
     };
     _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
-    _this.handleInputFile = _this.handleInputFile.bind(_assertThisInitialized(_this));
     _this.saveButton = _this.saveButton.bind(_assertThisInitialized(_this)); // this.getData = this.getData.bind(this);
 
     _this.getData();
@@ -66528,7 +66527,6 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
 
         _this2.setState({
           name: weapon.name,
-          image: [],
           url: "http://127.0.0.1:8000/uploads/images/".concat(weapon.image),
           precision: weapon.precision,
           scope: weapon.scope,
@@ -66547,35 +66545,15 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
       this.setState(_defineProperty({}, name, value));
     }
   }, {
-    key: "handleInputFile",
-    value: function handleInputFile(event) {
-      var img = event.target.files[0];
-      var fileName = document.querySelector('#file-js-example .file-name');
-      fileName.textContent = img.name;
-      var image = document.getElementById('image');
-      image.src = URL.createObjectURL(img);
-      this.setState(_defineProperty({}, event.target.name, img));
-    }
-  }, {
     key: "saveButton",
-    value: function saveButton() {// console.log(this.state);
-      // const dataedit = new FormData();
-      // dataedit.append('name', this.state.name);
-      // dataedit.append('name', this.state.name);
-      // console.log(dataedit);
-      // dataedit.append('precision', this.state.precision);
-      // dataedit.append('scope', this.state.scope);
-      // dataedit.append('hurt', this.state.hurt);
-      // // dataedit.append('image', this.state.image);
-      // console.log(dataedit);
-      // axios.patch(`http://127.0.0.1:8000/api/weapons/${id_weapon}`, dataedit)
-      //     .then(response => {
-      //         alert('Todo correcto compa!');
-      //         console.log(response);
-      //     }).catch(error => {
-      //         alert('Algo fallo');
-      //         console.error(error);
-      //     });
+    value: function saveButton() {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.patch("http://127.0.0.1:8000/api/weapons/".concat(id_weapon), this.state).then(function (response) {
+        alert('!Editado');
+        window.location.href = 'http://127.0.0.1:8000/weapons/';
+      })["catch"](function (error) {
+        alert('Algo fallo');
+        console.error(error);
+      });
     }
   }, {
     key: "render",
@@ -66596,6 +66574,17 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
       }, "Editar arma.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         action: "#"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "columns"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", {
+        className: "image is-5by3"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        id: "image",
+        src: this.state.url
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "column"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
@@ -66608,42 +66597,6 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
         value: this.state.name,
         onChange: this.handleInputChange
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "columns"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "column"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", {
-        className: "image is-5by3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        id: "image",
-        src: this.state.url
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "column"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "file-js-example",
-        className: "file is-primary has-name"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "file-label"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        className: "file-input",
-        type: "file",
-        accept: "image/x-png,image/jpeg",
-        name: "image",
-        onChange: this.handleInputFile
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "file-cta"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "file-icon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "fas fa-upload"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "file-label"
-      }, "Agrega una imagen")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "file-name"
-      }, "No hay archivo"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "columns"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "column"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
@@ -66657,9 +66610,7 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
         name: "precision",
         value: this.state.precision,
         onChange: this.handleInputChange
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "column"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"
@@ -66673,9 +66624,7 @@ var WeaponsEdit = /*#__PURE__*/function (_Component) {
         name: "scope",
         value: this.state.scope,
         onChange: this.handleInputChange
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "column"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "label"

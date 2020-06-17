@@ -12,11 +12,9 @@ class insert_weapons extends Seeder
     public function run()
     {
         DB::table('weapons')->insert([
-            ["name" => "Outlaw", "image" => "outlaw.jpg", "precision" => 55, "scope" => 95, "hurt" => 83],
-            ["name" => "Locus", "image" => "Locus.jpg", "precision" => 55, "scope" => 95, "hurt" => 95],
-            ["name" => "DL Q33", "image" => "DL Q33.jpg", "precision" => 60, "scope" => 95, "hurt" => 90],
-            ["name" => "Artic.50", "image" => "artic50.jgp", "precision" => 52, "scope" => 95, "hurt" => 85],
-            ["name" => "M21 EBR", "image" => "M21.jpg", "precision" => 60, "scope" => 90, "hurt" => 80]
+            ["name" => "Pistola de calibre 50", "image" => "c51616214d3d81373476b75b4bf89b5391a9181577af9ba4c630454cb01c9de6.png", "precision" => 40, "scope" => 40, "hurt" => 60],
+            ["name" => "Revolver de doble acción", "image" => "6d551b576dd42fecc159ad16736415ff3f25336025507f339bf328989f30e2c0.png", "precision" => 65, "scope" => 20, "hurt" => 70],
+            ["name" => "Subfusil", "image" => "16983531827b6179f5b2794f3a246a58134d33692a1427456b741189b6c85357.png", "precision" => 40, "scope" => 35, "hurt" => 20],
         ]);
     }
 }
