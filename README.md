@@ -6,6 +6,12 @@
 -   **[Caleb Isaac Mora Díaz](https://github.com/MrCIMD/)**
 -   **[Javier Efrén Marrufo Castillo](https://github.com/Javier99efren)**
 
+## Importante
+
+<p>
+Es importante que, al ejecutar ese proyecto, sea usando el servidor que agregar laravel (php artisan serve). Esto debido a que las peticiones http hacen referencia a http://127.0.0.1:8000/api/, si no se implementa el sistema no funciona.
+</p>
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
