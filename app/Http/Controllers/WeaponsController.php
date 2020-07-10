@@ -19,21 +19,22 @@ class WeaponsController extends Controller
 
     public function PostWeapon(Request $request){
         if ($request) {
+            $weapon = new Weapon();
             if ($request->hasFile('image')) {
                 $image = $request->image;
                 $fileName = hash('sha256', date('h-i-s, j-m-y, it is w Day')) . '.' . pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
                 $destinationPath = base_path() . '/public/uploads/images/';
                 $image->move($destinationPath, $fileName);
-                
+                $weapon->image = $fileName;
+            } else {
+                $weapon->image = 'noimage.png';
             }
-            $weapon = new Weapon();
             $weapon->name = $request->name;
-            $weapon->image = $fileName;
             $weapon->precision = $request->precision;
             $weapon->scope = $request->scope;
             $weapon->hurt = $request->hurt;
             $weapon->save();
-            return  response()->json(['success' => true, 'weapon' => $weapon] ,200);
+            return  response()->json(['success' => true, 'weapon' => $weapon] ,201);
         }
     }
 
