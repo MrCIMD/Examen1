@@ -8,38 +8,43 @@ use Tests\TestCase;
 
 class WeaponsControllerTest extends TestCase
 {
+    use RefreshDatabase, WithFaker;
+
+ 
     public function test_get_all(){
-        $response = $this->getJson('/weapons');
+        $response = $this->getJson('api/weapons');
         $response->assertStatus(200);   
     }
 
     public function test_get_by_id(){
-        $response = $this->getJson('/weapons/1');
+        $response = $this->getJson('api/weapons/1');
         $response->assertStatus(200);   
     }
+ 
 
     public function test_post_weapon(){
-        $response = $this->postJson('/weapons', [
+        $response = $this->postJson('api/weapons', [
             'name' => 'Weapons Test',
             'precision' => 50,
             'scope' => 50,
             'hurt' => 50
         ]);
-        $response->assertStatus(201); 
+        $response->assertJson(['success' => true]); 
     }
 
     public function test_patch_weapon(){
-        $response = $this->patchJson('/weapons/1', [
-            'name' => 'Weapons Test 2',
-            'precision' => 90,
-            'scope' => 90,
-            'hurt' => 90
+        $response = $this->patchJson('api/weapons/1', [
+            'name' => 'Weapons Test',
+            'precision' => 80,
+            'scope' => 80,
+            'hurt' => 80
         ]);
-        $response->assertStatus(200);
+        $response->assertJson(['success' => true]); 
     }
 
     public function test_delete_by_id(){
-        $response = $this->deleteJson('/weapons/1');
+        $response = $this->deleteJson('api/weapons/1');
         $response->assertStatus(200);   
     }
+ 
 }

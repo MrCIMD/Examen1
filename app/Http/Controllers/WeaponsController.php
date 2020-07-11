@@ -34,7 +34,7 @@ class WeaponsController extends Controller
             $weapon->scope = $request->scope;
             $weapon->hurt = $request->hurt;
             $weapon->save();
-            return  response()->json(['success' => true, 'weapon' => $weapon] ,201);
+            return  response()->json(['success' => true]);
         }
     }
 
@@ -47,7 +47,7 @@ class WeaponsController extends Controller
             $weapon->scope = $request->scope;
             $weapon->hurt = $request->hurt;
             $weapon->save();
-            return response()->json(['success' => true, 'weapon' => $weapon], 200);
+            return response()->json(['success' => true]);
         }
     }
 
