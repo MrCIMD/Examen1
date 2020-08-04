@@ -6,7 +6,7 @@ function LayoutHeader() {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
+                <a className="navbar-item" href="/">
                     <img src={image} width="28" height="28" />
                 </a>
                 <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -23,8 +23,8 @@ function LayoutHeader() {
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                            <a className="button is-primary"><strong>Sign up</strong></a>
-                            <a className="button is-light">Log in</a>
+                            <a className="button is-primary" href="/register"><strong>Sign up</strong></a>
+                            <a className="button is-light" href="/login">Log in</a>
                         </div>
                     </div>
                 </div>

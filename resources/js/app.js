@@ -12,6 +12,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+require('./components/Example');
 require('./components/layout/header.component');
 require('./components/layout/footer.component');
 require('./components/pages/home.component');

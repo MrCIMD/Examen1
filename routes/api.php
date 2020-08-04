@@ -18,6 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('register', 'UserController@register');
+
+Route::post('login', 'UserController@authenticate');
+
 Route::get('/weapons', 'WeaponsController@GetWeapons');
 
 Route::get('/weapons/{id?}', 'WeaponsController@GetWeapon');

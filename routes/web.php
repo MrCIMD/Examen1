@@ -32,3 +32,7 @@ Route::get('/weapons/edit/{id?}', function ($id) {
 Route::get('/weapons/delete/{id?}', function ($id) {
     return view('pages.weapons.delete', ['id' => $id]);
 });
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    /*AÑADE AQUI LAS RUTAS QUE QUIERAS PROTEGER CON JWT*/
+});
